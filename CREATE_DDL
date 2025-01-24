@@ -1,0 +1,59 @@
+
+-- Create the database 
+
+CREATE DATABASE Superstore;
+
+
+-- Create schema Employee 
+CREATE SCHEMA Employee; 
+
+-- Create table Staff
+CREATE TABLE Employee.Staff (
+    Id INT PRIMARY KEY, -- Added PRIMARY KEY to uniquely identify rows
+    Name VARCHAR(30), -- Changed 'string' to VARCHAR with a defined length
+    Phone_Number VARCHAR(15), -- Handle phone numbers with special characters like '+' or '-'
+    Location VARCHAR(10), -- Added data type
+    Shift VARCHAR(15),
+    Role_ID INT -- Foreign key should reference Staff_Role(Role_ID)
+);
+
+-- Create table Staff_Role
+CREATE TABLE Employee.Staff_Role (
+    Role_ID INT PRIMARY KEY, -- Added PRIMARY KEY
+    Task VARCHAR(20) -- Increased size to allow longer task descriptions
+);
+
+
+-- Create schema Inventory
+CREATE SCHEMA Inventory;
+
+-- Create table Items
+CREATE TABLE Inventory.Items (
+    Item_ID INT PRIMARY KEY, -- Added PRIMARY KEY
+    Item_Name VARCHAR(30), -- VARCHAR with a defined length
+    Item_Price DECIMAL(10, 2), -- DECIMAL for better representation of prices
+    Packing_Date DATE,
+    Expiry_Date DATE
+);
+
+-- Create table Transactions
+CREATE TABLE Inventory.Transactions (
+    Transaction_ID INT PRIMARY KEY, -- Added a unique identifier for transactions
+    Item_ID INT, -- Foreign key should reference Items(Item_ID)
+    Quantity_Sold INT,
+    Purchase_Date DATE,
+    Return_Date DATE,
+    Customer_ID INT -- Foreign key should reference Customer(Customer_ID)
+);
+
+-- Create table Customer
+CREATE TABLE Inventory.Customer (
+    Customer_ID INT PRIMARY KEY, -- Added PRIMARY KEY
+    Cust_Name VARCHAR(30), -- ARCHAR with a defined length
+    Cust_PhoneNumber VARCHAR(15), -- VARCHAR for phone numbers
+    Cust_Location VARCHAR(50), -- Consistent naming
+    Cust_ItemPurchaseDate DATE,
+    Cust_ItemReturnDate DATE
+);
+
+
