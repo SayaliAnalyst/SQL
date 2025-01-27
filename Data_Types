@@ -1,0 +1,46 @@
+Data Types In SQL:-
+The data type of the columns must be accurate and consistent to optimize storage and query performance.
+
+➡️INT (Integer)
+Holds whole numbers, often used for numeric fields like IDs, ages, or counters.
+Example :- Age INT, -- Holds values like 18, 25, 100
+
+➡️STRING(or VARCHAR in most databases)
+Holds alphanumeric values such as names, locations, or other text-based data.
+➡️VARCHAR(LENGTH)
+A variable-length string data type that can store text, numbers, and symbols.
+It's useful when you want to limit the size of a text field to save storage.
+Example :- Name VARCHAR(50), -- Holds text like "John", "New York"
+
+➡️FLOAT
+Used to store decimal values, often for prices, weights, or percentages.
+Example :- Product_Price FLOAT, -- Holds values like 29.99 or 0.75
+
+➡️DATE
+Used to store calendar dates in the format YYYY-MM-DD, often for birthdays, transaction dates, or any other time-specific information that does not include time components.
+Example :- Order_Date DATE
+
+➡️Decimal
+The DECIMAL (or NUMERIC) data type is used to store exact numeric values with fixed precision. Slower than float.
+Example :-  Discount_Rate DECIMAL(5, 2)
+Use DECIMAL for:
+Financial data (e.g., prices, taxes, discounts).
+Exact calculations requiring fixed precision.
+
+
+Pitfalls/Limitations:-
+
+INT: Best for numeric values without decimals, but be careful about its size (e.g., INT vs. BIGINT)."
+VARCHAR: Use VARCHAR with a length limit to avoid excessive storage usage.
+FLOAT: Avoid using FLOAT for precise calculations like currency. Use DECIMAL instead.
+
+
+CREATE TABLE Employee (
+ Id INT ,
+ Name VARCHAR(20), -- VARCHAR with a defined length
+ Phone_Number VARCHAR(15), -- VARCHAR to handle phone numbers with special characters like '+' or '-'
+ Joining_Date Date,
+ Incentive_Earned float
+);
+
+
